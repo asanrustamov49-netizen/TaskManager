@@ -1,0 +1,49 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.limit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.limit select {
+  min-height: 34px;
+  padding: 0 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.current {
+  min-width: 64px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .pagination {
+    justify-content: center;
+  }
+
+  .pages {
+    order: -1; /* кнопки страниц первыми */
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,38 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(200px, 2fr) repeat(3, minmax(140px, 1fr)) auto;
+  align-items: end;
+  gap: 12px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.reset {
+  align-self: end;
+}
+
+/* Планшет: поиск на всю ширину, фильтры под ним */
+@media (max-width: 900px) {
+  .toolbar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .search {
+    grid-column: 1 / -1;
+  }
+
+  .reset {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+/* Телефон: всё в один столбец */
+@media (max-width: 560px) {
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+}

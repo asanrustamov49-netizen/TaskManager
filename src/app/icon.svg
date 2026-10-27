@@ -1,0 +1,13 @@
+<!-- Иконка сайта во вкладке браузера. Повторяет логотип из шапки (AppHeader .logoMark):
+     квадрат 32×32 со скруглением 9px, фиолетовый градиент 135°, белая галочка 16px.
+     Next.js сам подключает файл app/icon.svg в <head>. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6246ea" />
+      <stop offset="100%" stop-color="#b14ae0" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="9" fill="url(#g)" />
+  <text x="16" y="16" fill="#fff" font-size="16" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" text-anchor="middle" dominant-baseline="central">✓</text>
+</svg>
