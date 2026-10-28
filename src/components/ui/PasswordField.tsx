@@ -1,9 +1,5 @@
 "use client";
 
-// Поле пароля с кнопкой-глазом: по клику пароль показывается или снова скрывается точками.
-// Используется так же, как TextField: <PasswordField label="Пароль" error={...} {...register("password")} />
-// Показ меняет только type у <input> ("password" ↔ "text"), сам пароль остаётся в поле.
-
 import { useId, useState, type ComponentProps } from "react";
 import styles from "./Field.module.css";
 import passwordStyles from "./PasswordField.module.css";
@@ -25,7 +21,6 @@ export function PasswordField({ label, error, id, ...inputProps }: Props) {
         {label}
       </label>
 
-      {/* Обёртка нужна, чтобы поставить кнопку поверх правого края поля */}
       <div className={passwordStyles.wrapper}>
         <input
           id={inputId}
@@ -36,7 +31,7 @@ export function PasswordField({ label, error, id, ...inputProps }: Props) {
           {...inputProps}
         />
         <button
-          type="button" // без этого клик по кнопке отправил бы форму
+          type="button"
           className={passwordStyles.toggle}
           onClick={() => setVisible((v) => !v)}
           aria-label={visible ? "Скрыть пароль" : "Показать пароль"}
@@ -56,7 +51,6 @@ export function PasswordField({ label, error, id, ...inputProps }: Props) {
   );
 }
 
-// Открытый глаз: пароль сейчас скрыт, клик покажет его.
 function EyeIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -66,7 +60,6 @@ function EyeIcon() {
   );
 }
 
-// Перечёркнутый глаз: пароль сейчас виден, клик скроет его.
 function EyeOffIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
