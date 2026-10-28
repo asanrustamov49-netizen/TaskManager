@@ -19,7 +19,6 @@
     transform 0.1s;
 }
 
-/* Лёгкое «нажатие» */
 .button:active:not(:disabled) {
   transform: scale(0.97);
 }
