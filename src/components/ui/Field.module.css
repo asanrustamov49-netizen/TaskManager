@@ -1,5 +1,3 @@
-/* Общие стили для TextField, TextArea и Select. */
-
 .field {
   display: flex;
   flex-direction: column;
