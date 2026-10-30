@@ -1,10 +1,4 @@
 "use client";
-
-// Главный экран задач. Здесь хранится всё состояние страницы:
-// - фильтры (поиск, приоритет, категория, сортировка), номер страницы и размер страницы;
-// - какое окно сейчас открыто (создание, редактирование, удаление).
-// Остальные компоненты только показывают данные и сообщают об изменениях.
-
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { useDebouncedValue } from "@/lib/useDebouncedValue";
@@ -19,7 +13,6 @@ import type { Task, TaskFilters } from "./types";
 
 const DEFAULT_FILTERS: TaskFilters = { search: "", priority: "", category: "", sort: "newest" };
 
-// Какое окно открыто: никакое, создание, редактирование задачи или удаление задачи.
 type OpenModal = { type: "none" } | { type: "create" } | { type: "edit"; task: Task } | { type: "delete"; task: Task };
 
 export function TasksView() {
@@ -28,12 +21,9 @@ export function TasksView() {
   const [limit, setLimit] = useState(10);
   const [modal, setModal] = useState<OpenModal>({ type: "none" });
 
-  // Поиск отправляем на сервер через 300 мс после последней нажатой клавиши.
   const search = useDebouncedValue(filters.search, 300);
   const { data, isPending, isError, error, isPlaceholderData } = useTasks({ ...filters, search, page, limit });
 
-  // При смене любого фильтра возвращаемся на первую страницу,
-  // иначе можно оказаться на странице 5, когда результатов всего на одну.
   function changeFilters(changes: Partial<TaskFilters>) {
     setFilters((current) => ({ ...current, ...changes }));
     setPage(1);
@@ -49,7 +39,6 @@ export function TasksView() {
     setPage(1);
   }
 
-  // Удалили последнюю задачу на странице — переходим на предыдущую страницу.
   function handleDeleted() {
     if (data && data.tasks.length === 1 && page > 1) setPage(page - 1);
   }
@@ -69,7 +58,6 @@ export function TasksView() {
 
       <TaskToolbar filters={filters} onChange={changeFilters} onReset={resetFilters} />
 
-      {/* Первая загрузка: серые «скелеты» строк */}
       {isPending && <ListSkeleton />}
 
       {isError && <p className={styles.error}>Не удалось загрузить задачи: {error.message}</p>}
@@ -96,7 +84,6 @@ export function TasksView() {
 
       {data && data.tasks.length > 0 && (
         <>
-          {/* isPlaceholderData: пока грузится новая страница, старый список полупрозрачный */}
           <ul className={`${styles.list} ${isPlaceholderData ? styles.loading : ""}`}>
             {data.tasks.map((task) => (
               <TaskRow
@@ -118,7 +105,6 @@ export function TasksView() {
   );
 }
 
-// "Найдено 5 задач" / "Всего 1 задача". Русские окончания зависят от числа.
 function countLabel(count: number, filtered: boolean): string {
   const word = new Intl.PluralRules("ru").select(count);
   const forms: Record<string, string> = { one: "задача", few: "задачи", many: "задач", other: "задачи" };

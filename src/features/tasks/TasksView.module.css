@@ -70,7 +70,6 @@
   color: var(--text);
 }
 
-/* Мерцающая заглушка, пока список загружается в первый раз */
 .skeleton {
   height: 72px;
   border-radius: var(--radius);
