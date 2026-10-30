@@ -1,9 +1,4 @@
 "use client";
-
-// Окно с формой задачи. Одна форма для двух случаев:
-// - task не передан — создание новой задачи;
-// - task передан — редактирование, поля заполнены его данными.
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/Button";
@@ -43,10 +38,8 @@ export function TaskFormModal({ task, onClose }: Props) {
     },
   });
 
-  // Вызывается, только если форма прошла проверку схемой.
   function onSubmit(values: TaskFormValues) {
-    const input = { ...values, category: values.category || null }; // пустая строка → без категории
-    // Окно закрываем только после успешного ответа. При ошибке оно остаётся открытым, а тост покажет причину.
+    const input = { ...values, category: values.category || null }; 
     if (isEdit) {
       updateTask.mutate({ id: task.id, input }, { onSuccess: onClose });
     } else {
@@ -81,7 +74,6 @@ export function TaskFormModal({ task, onClose }: Props) {
             ))}
           </Select>
 
-          {/* list + datalist: можно ввести новую категорию или выбрать из уже существующих */}
           <TextField
             label="Категория"
             placeholder="Работа, Дом…"
