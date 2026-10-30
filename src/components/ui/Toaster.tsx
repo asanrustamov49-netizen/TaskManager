@@ -1,8 +1,4 @@
 "use client";
-
-// Выводит тосты в правом нижнем углу. Подключён один раз в app/providers.tsx.
-// Сами тосты создаются через toast.success() / toast.error() из lib/toast.ts.
-
 import { useToastStore } from "@/lib/toast";
 import styles from "./Toaster.module.css";
 
@@ -11,7 +7,6 @@ export function Toaster() {
   const hide = useToastStore((state) => state.hide);
 
   return (
-    // aria-live: экранный диктор зачитает новый тост вслух.
     <div className={styles.container} aria-live="polite">
       {toasts.map((t) => (
         <div key={t.id} className={`${styles.toast} ${styles[t.type]}`} role="status">

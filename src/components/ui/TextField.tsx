@@ -1,18 +1,13 @@
-// Поле ввода с подписью и текстом ошибки.
-// С react-hook-form: <TextField label="Email" error={errors.email?.message} {...register("email")} />
-// register() возвращает name, onChange, onBlur и ref, а TextField передаёт их в <input>.
-
 import { useId, type ComponentProps } from "react";
 import styles from "./Field.module.css";
 
 type Props = ComponentProps<"input"> & {
   label: string;
   error?: string;
-  hint?: string; // серый текст-подсказка под полем
+  hint?: string; 
 };
 
 export function TextField({ label, error, hint, id, className, ...inputProps }: Props) {
-  // useId даёт уникальный id, чтобы связать <label> и <input> (клик по подписи ставит фокус в поле).
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const errorId = `${inputId}-error`;

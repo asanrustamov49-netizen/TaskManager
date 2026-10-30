@@ -1,8 +1,3 @@
-// Выпадающий список с подписью. Варианты передаются как обычные <option> внутри:
-// <Select label="Приоритет" value={...} onChange={...}>
-//   <option value="high">Высокий</option>
-// </Select>
-
 import { useId, type ComponentProps } from "react";
 import styles from "./Field.module.css";
 

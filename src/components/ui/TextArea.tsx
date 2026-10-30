@@ -1,5 +1,3 @@
-// Многострочное поле с подписью и ошибкой. Работает так же, как TextField.
-
 import { useId, type ComponentProps } from "react";
 import styles from "./Field.module.css";
 
