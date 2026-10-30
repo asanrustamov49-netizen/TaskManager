@@ -1,7 +1,4 @@
 "use client";
-
-// Форма регистрации. Проверка полей — registerSchema (schemas.ts), отправка — useRegister (hooks.ts).
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -23,7 +20,6 @@ export function RegisterForm() {
   return (
     <form
       className={styles.form}
-      // confirmPassword нужен только для проверки в форме, на сервер его не отправляем.
       onSubmit={handleSubmit(({ email, password }) => registerUser.mutate({ email, password }))}
       noValidate
     >
