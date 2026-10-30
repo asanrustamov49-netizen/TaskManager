@@ -1,7 +1,4 @@
 "use client";
-
-// Шапка страницы задач: логотип, email пользователя и кнопка «Выйти».
-
 import { useLogout, useMe } from "@/features/auth/hooks";
 import { Button } from "./ui/Button";
 import styles from "./AppHeader.module.css";
@@ -23,7 +20,6 @@ export function AppHeader() {
         <div className={styles.user}>
           {user && (
             <>
-              {/* Кружок с первой буквой email */}
               <span className={styles.avatar} aria-hidden>
                 {user.email[0].toUpperCase()}
               </span>
