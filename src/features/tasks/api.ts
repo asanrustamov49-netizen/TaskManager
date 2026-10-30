@@ -1,10 +1,6 @@
-// Запросы к /api/tasks. Только сами запросы, без кэширования (оно в hooks.ts).
-
 import { api } from "@/lib/api";
 import type { Task, TaskInput, TaskListParams, TaskListResponse } from "./types";
 
-// Собирает строку вида "page=1&limit=10&search=хлеб&sort=newest".
-// Пустые фильтры не отправляем: на сервере отсутствие параметра означает «не фильтровать».
 function toQueryString(params: TaskListParams): string {
   const query = new URLSearchParams();
   query.set("page", String(params.page));
