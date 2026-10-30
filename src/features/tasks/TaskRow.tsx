@@ -1,5 +1,3 @@
-// Одна строка в списке задач: цветная полоска приоритета, название, описание, метки и кнопки действий.
-
 import { Button } from "@/components/ui/Button";
 import { PRIORITY_LABELS } from "./constants";
 import styles from "./TaskRow.module.css";
@@ -11,12 +9,10 @@ type Props = {
   onDelete: (task: Task) => void;
 };
 
-// "2026-10-07T09:44:09.860Z" → "7 окт. 2026 г."
 const dateFormat = new Intl.DateTimeFormat("ru", { day: "numeric", month: "short", year: "numeric" });
 
 export function TaskRow({ task, onEdit, onDelete }: Props) {
   return (
-    // data-priority используется в CSS для цвета полоски слева.
     <li className={styles.row} data-priority={task.priority}>
       <div className={styles.main}>
         <h3 className={styles.title}>{task.title}</h3>
