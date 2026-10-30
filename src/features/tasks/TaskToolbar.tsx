@@ -1,9 +1,4 @@
 "use client";
-
-// Панель над списком: поиск, фильтры по приоритету и категории, сортировка.
-// Сама панель ничего не хранит: текущие значения приходят в filters,
-// а изменения уходят наверх через onChange (состояние лежит в TasksView).
-
 import { Button } from "@/components/ui/Button";
 import { Select } from "@/components/ui/Select";
 import { TextField } from "@/components/ui/TextField";

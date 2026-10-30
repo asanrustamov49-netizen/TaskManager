@@ -14,7 +14,6 @@
   align-self: end;
 }
 
-/* Планшет: поиск на всю ширину, фильтры под ним */
 @media (max-width: 900px) {
   .toolbar {
     grid-template-columns: repeat(3, 1fr);
@@ -30,7 +29,6 @@
   }
 }
 
-/* Телефон: всё в один столбец */
 @media (max-width: 560px) {
   .toolbar {
     grid-template-columns: 1fr;
