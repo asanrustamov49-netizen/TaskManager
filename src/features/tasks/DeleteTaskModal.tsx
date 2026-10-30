@@ -1,7 +1,4 @@
 "use client";
-
-// Окно «Удалить задачу?» с кнопками «Отмена» и «Удалить».
-
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import styles from "./DeleteTaskModal.module.css";
@@ -11,7 +8,7 @@ import type { Task } from "./types";
 type Props = {
   task: Task;
   onClose: () => void;
-  onDeleted: () => void; // вызывается после успешного удаления
+  onDeleted: () => void; 
 };
 
 export function DeleteTaskModal({ task, onClose, onDeleted }: Props) {

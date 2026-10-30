@@ -1,30 +1,18 @@
 "use client";
-
-// Хуки TanStack Query для задач.
-//
-// useQuery — загрузка данных: сам кэширует ответ и отдаёт { data, isPending, error }.
-// useMutation — изменение данных: даёт функцию mutate() и флаг isPending.
-//
-// После каждого изменения вызываем invalidateQueries(["tasks"]): так всё, что закэшировано
-// по ключам, начинающимся с "tasks" (списки и категории), загрузится заново.
-
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "@/lib/toast";
 import { tasksApi } from "./api";
 import type { TaskInput, TaskListParams } from "./types";
 
-// Ключи кэша. У каждого набора параметров списка свой ключ и свой кэш.
 export const tasksKeys = {
   all: ["tasks"] as const,
   list: (params: TaskListParams) => ["tasks", "list", params] as const,
   categories: ["tasks", "categories"] as const,
 };
-
 export function useTasks(params: TaskListParams) {
   return useQuery({
     queryKey: tasksKeys.list(params),
     queryFn: () => tasksApi.list(params),
-    // Пока грузится новая страница или результат поиска, показываем старый список, а не пустоту.
     placeholderData: keepPreviousData,
   });
 }
