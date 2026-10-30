@@ -1,5 +1,3 @@
-/* Общие стили форм входа и регистрации */
-
 .form {
   display: flex;
   flex-direction: column;
@@ -17,7 +15,6 @@
   color: var(--text-muted);
 }
 
-/* Ошибка от сервера, например «Неверный email или пароль» */
 .serverError {
   padding: 10px 12px;
   border-radius: var(--radius);
