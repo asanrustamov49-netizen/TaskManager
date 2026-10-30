@@ -1,6 +1,3 @@
-// Правила проверки формы задачи (Zod + react-hook-form).
-// Повторяют проверку на бэкенде (backend/src/controllers/tasks.controller.ts) — меняйте их вместе.
-
 import { z } from "zod";
 
 export const taskFormSchema = z.object({
@@ -14,6 +11,4 @@ export const taskFormSchema = z.object({
   category: z.string().trim().max(50, "Категория должна быть не длиннее 50 символов"),
 });
 
-// Тип значений формы. Категория здесь всегда строка (пустая — без категории),
-// в null она превращается перед отправкой (см. TaskFormModal).
 export type TaskFormValues = z.infer<typeof taskFormSchema>;
