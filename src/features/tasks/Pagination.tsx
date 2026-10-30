@@ -1,5 +1,3 @@
-// Переключение страниц и выбор количества задач на странице.
-
 import { Button } from "@/components/ui/Button";
 import { PAGE_SIZES } from "./constants";
 import styles from "./Pagination.module.css";

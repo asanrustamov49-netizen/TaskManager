@@ -42,7 +42,7 @@
   }
 
   .pages {
-    order: -1; /* кнопки страниц первыми */
+    order: -1; 
     width: 100%;
     justify-content: space-between;
   }
