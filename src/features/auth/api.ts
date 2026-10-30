@@ -1,5 +1,3 @@
-// Запросы к /api/auth. Каждый возвращает пользователя без лишней обёртки { user }.
-
 import { api } from "@/lib/api";
 import type { LoginValues } from "./schemas";
 
